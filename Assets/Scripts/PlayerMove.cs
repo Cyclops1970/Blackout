@@ -1,51 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour {
 
     public float moveSpeed;
-    public Joystick joystick;
+    public Joystick joystickMove;
     public Joystick joystickRotate;
+    float keyboardSpeed = 1;
 
-    bool wallHit;
-
-	void Update () 
+    void Update () 
 	{
-        if (wallHit == false)
+        //Reset scene shortcut **** remove when done ****
+        if(Input.GetKeyUp(KeyCode.F12))
         {
-            //Move
-            Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical).normalized;
-            transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-
-            //Rotate
-            Vector3 rotateVector = (transform.right * joystickRotate.Horizontal).normalized;
-            transform.Rotate(transform.up, joystickRotate.Horizontal);
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
         }
 
-    }
+        //Currently setup to work with the movejoystick only....commented ones will run off one joysticks
+        //Move
+        Vector3 moveVector = (Vector3.right * joystickMove.Horizontal + Vector3.forward * joystickMove.Vertical).normalized;
+        //Vector3 moveVector = (Vector3.forward * joystickMove.Vertical).normalized;
+        transform.Translate(moveVector * moveSpeed * Time.deltaTime);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        wallHit = true;
+        //Rotate
+        Vector3 rotateVector = (Vector3.right * joystickRotate.Horizontal).normalized;
+        //Vector3 rotateVector = (Vector3.right * joystickMove.Horizontal).normalized;
+        transform.Rotate(transform.up, joystickRotate.Horizontal*2);
+        //transform.Rotate(transform.up, joystickMove.Horizontal * 2);
 
-        Vector3 direction = collision.transform.position - transform.position;
-        if (Vector3.Dot(transform.forward, direction) > 0)
-        {
-            print("Back");
-        }
-        if (Vector3.Dot(transform.forward, direction) < 0)
-        {
-            print("Front");
-        }
-        if (Vector3.Dot(transform.forward, direction) == 0)
-        {
-            print("Side");
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        wallHit = false;
-
-        print("safe");
     }
 }

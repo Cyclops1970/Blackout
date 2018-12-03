@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135465021128426432}
   - component: {fileID: 54676619164644468}
   - component: {fileID: 114665221760607886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LightGlobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847226112357032}
   - component: {fileID: 108888118939196928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,8 +124,8 @@ Rigidbody:
   m_GameObject: {fileID: 1013923774786728}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 5000000
+  m_Drag: 1
+  m_AngularDrag: 20
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -141,8 +141,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
-  m_Range: 10
+  m_Intensity: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

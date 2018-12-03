@@ -6,8 +6,10 @@ public class FixedJoystick : Joystick
     //what the joystick controls
     public GameObject player;
 
-    [Header("Fixed Joystick")]
+    [HideInInspector]
+    //public bool usingJoystick;
 
+    [Header("Fixed Joystick")]
 
     Vector2 joystickPosition = Vector2.zero;
     private Camera cam = new Camera();
@@ -15,7 +17,6 @@ public class FixedJoystick : Joystick
     void Start()
     {
         joystickPosition = RectTransformUtility.WorldToScreenPoint(cam, background.position);
-        print(this.gameObject.name+" "+joystickPosition);
     }
 
     public override void OnDrag(PointerEventData eventData)
@@ -27,7 +28,7 @@ public class FixedJoystick : Joystick
     }
 
     public override void OnPointerDown(PointerEventData eventData)
-    {   
+    {
         //my code
         //player.transform.rotation = Quaternion.identity;
         //player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;

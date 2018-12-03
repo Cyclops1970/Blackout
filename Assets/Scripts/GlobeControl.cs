@@ -10,6 +10,10 @@ public class GlobeControl : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody>().drag = 25;
         }
+        else
+        {
+            print("Light hit " + collision.gameObject.name);
+        }
     }
     private void OnCollisionStay(Collision collision)
     {
